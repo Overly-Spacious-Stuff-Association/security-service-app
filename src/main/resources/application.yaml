@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+jwt:
+  secret: c2VjdXJla2V5dG9rZW4zMjIzOTFzZnhrZGZka2YzNDM5MjM5MzJzZGZkc2YwNzE5
+
+spring:
+  application:
+    name: security-service
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5440/ossa-db
+    username: dbuser
+    password: dbpassword
+    hikari:
+      schema: securityservice
+      idle-timeout: 120000
+      max-lifetime: 300000
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+
+  liquibase:
+    enabled: false
