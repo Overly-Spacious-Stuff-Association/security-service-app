@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 9091
 
 jwt:
   secret: c2VjdXJla2V5dG9rZW4zMjIzOTFzZnhrZGZka2YzNDM5MjM5MzJzZGZkc2YwNzE5
@@ -10,7 +10,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5440/ossa-db
+    url: jdbc:postgresql://localhost:5440/fitness-db
     username: dbuser
     password: dbpassword
     hikari:
@@ -19,11 +19,18 @@ spring:
       max-lifetime: 300000
 
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        hbm2ddl:
-          auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    generate-ddl: false
+    show-sql: true
 
   liquibase:
     enabled: false
+
+grpc:
+  client:
+    user_service:
+      address: localhost:6565
+      negotiation-type: plaintext
